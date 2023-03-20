@@ -1,0 +1,10 @@
+.foodImg {
+  width: 60%;
+}
+.foodImg:hover {
+  width: 70%;
+}
+
+.offreImg {
+  width: 100%;
+}

@@ -1,0 +1,11 @@
+.colorbtn {
+  color: #842029;
+  border-color: #842029;
+  border-radius: 0;
+}
+
+.colorbtn:hover {
+  color: white;
+  background-color: #842029;
+  border-color: #842029;
+}

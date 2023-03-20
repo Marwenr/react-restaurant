@@ -5,9 +5,28 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #212529;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.nav-pills .nav-link {
+  color: rgb(132, 32, 41);
+}
+
+.nav-link.active {
+  color: white!important;
+  background-color: rgb(132, 32, 41)!important;
+}
+
+.cardContent {
+  border: 5px solid #e9d0d0!important;
+  border-radius: 25px;
+}
+
+.card {
+  background-color: #e9d0d0;
 }
