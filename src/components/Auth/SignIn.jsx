@@ -2,18 +2,22 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "../Button/Button";
 
+import { useDispatch } from "react-redux";
+import { signIn } from "../../store/authSlice";
+
+import { users } from "../../data/data";
+
 const SignIn = ({ close }) => {
-  const style = {width: "100%"}
+  const dispatch = useDispatch();
+
+  const style = { width: "100%" };
   const [info, setInfo] = useState({
-    id: Math.round(Math.random() * 100),
-    name: "",
     email: "",
     password: "",
-    gender: "",
   });
 
   const handleInput = (e) => {
-    const key = e.target.id;
+    const key = e.target.name;
     const value = e.target.value;
     setInfo((prevState) => {
       return { ...prevState, [key]: value };
@@ -22,14 +26,16 @@ const SignIn = ({ close }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    setInfo({
-      id: "",
-      name: "",
-      email: "",
-      number: 0,
-      gender: "",
-    });
+    users.find((el) => el.email === info.email)
+      ? users.find((el) => el.password === info.password)
+        ? dispatch(signIn(true))
+        : dispatch(signIn(false))
+      : dispatch(signIn(false));
     close();
+    setInfo({
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -42,27 +48,25 @@ const SignIn = ({ close }) => {
         <h4>Sign in or Create an Account</h4>
         <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
           <Form.Control
-            id="email"
             type="email"
             name="email"
-            placeholder="Email address"
             value={info.email}
+            placeholder="Email address"
             onChange={handleInput}
           />
         </Form.Group>
 
         <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
           <Form.Control
-            id="password"
             type="password"
             name="password"
-            placeholder="Password"
             value={info.password}
+            placeholder="Password"
             onChange={handleInput}
           />
         </Form.Group>
 
-        <Button contentButton={"Sign In"} style={style} />
+        <Button contentButton={"Sign In"} style={style} type={"submit"} />
       </Form>
     </>
   );

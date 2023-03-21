@@ -5,9 +5,7 @@ const Articles = ({ menuItems }) => {
   const cards = menuItems.map((el) => (
     <Col lg="6" key={el.id} className="mb-3">
       <CardComponent
-        title={el.name}
-        description={el.description}
-        image={el.image}
+        item={el}
       />
     </Col>
   ));

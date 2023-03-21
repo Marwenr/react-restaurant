@@ -30,3 +30,14 @@ code {
 .card {
   background-color: #e9d0d0;
 }
+
+
+.cart {
+  position: absolute;
+  background-color: #842029;
+  border-radius: 50%;
+  top: -8px;
+  left: 13px;
+  text-align: center;
+  padding: 0px 7px;
+}

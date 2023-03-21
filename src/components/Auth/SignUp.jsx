@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "../Button/Button";
 
-const SignUp = ({ close }) => {
+const SignUp = () => {
   const style = { width: "100%" };
   const [info, setInfo] = useState({
     id: Math.round(Math.random() * 100),
-    name: "",
+    userName: "",
     email: "",
     password: "",
-    gender: "",
   });
 
   const handleInput = (e) => {
-    const key = e.target.id;
+    const key = e.target.name;
     const value = e.target.value;
     setInfo((prevState) => {
       return { ...prevState, [key]: value };
@@ -22,14 +21,6 @@ const SignUp = ({ close }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    setInfo({
-      id: "",
-      name: "",
-      email: "",
-      number: 0,
-      gender: "",
-    });
-    close();
   };
 
   return (
@@ -37,35 +28,29 @@ const SignUp = ({ close }) => {
       <Form className="p-4" onSubmit={onSubmitHandler}>
         <h4>Create an Account</h4>
 
-        <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
+        <Form.Group className="mb-3 mt-4" controlId="formBasicUserName">
           <Form.Control
-            id="name"
             type="text"
-            name="name"
+            name="username"
             placeholder="UserName"
-            value={info.name}
             onChange={handleInput}
           />
         </Form.Group>
 
         <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
           <Form.Control
-            id="email"
             type="email"
             name="email"
             placeholder="Email address"
-            value={info.email}
             onChange={handleInput}
           />
         </Form.Group>
 
         <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
           <Form.Control
-            id="password"
             type="password"
             name="password"
             placeholder="Password"
-            value={info.password}
             onChange={handleInput}
           />
         </Form.Group>

@@ -1,9 +1,10 @@
 import { useState } from "react";
+
 import Nav from "../Nav/Nav";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-const Auth = () => {
+const Auth = ({ close }) => {
   const [Auth, setAuth] = useState("Sign In");
 
   const handleMenu = (value) => {
@@ -24,7 +25,7 @@ const Auth = () => {
   return (
     <>
       <Nav items={authItems} handleMenu={handleMenu} />
-      {Auth === "Sign In" ? <SignIn /> : <SignUp />}
+      {Auth === "Sign In" ? <SignIn close={close} /> : <SignUp />}
     </>
   );
 };
